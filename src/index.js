@@ -22,7 +22,7 @@ const createWindow = () => {
   // Listen for the IPC event
   ipcMain.on("send-password", (event, password) => {
     const command = "sudo";
-    const args = ["-S", "jamf", "recon"];
+    const args = ["-S", "/usr/local/bin/jamf", "recon"];
 
     const child = spawn(command, args, {
       stdio: ["pipe", "pipe", "pipe"],
@@ -118,6 +118,7 @@ e.on("ready", () => {
           { role: "togglefullscreen" },
           { type: "separator" },
           { role: "reload" },
+          {role : "toggleDevTools" }
         ],
       },
       {
